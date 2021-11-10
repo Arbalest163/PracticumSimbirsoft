@@ -20,7 +20,12 @@ namespace WebApplicationProject
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>()
+                    .ConfigureLogging((ctx, logging) =>
+                    {
+                        logging.AddConfiguration(ctx.Configuration.GetSection("Logging"));
+
+                    });
                 });
     }
 }

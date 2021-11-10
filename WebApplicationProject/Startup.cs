@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplicationProject.Middlewares;
 using WebApplicationProject.Models;
 using WebApplicationProject.Services;
 
@@ -50,6 +51,8 @@ namespace WebApplicationProject
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplicationProject v1"));
             }
+
+            app.UseMiddleware<RequestLoggingMiddleware>();
 
             app.UseHttpsRedirection();
 

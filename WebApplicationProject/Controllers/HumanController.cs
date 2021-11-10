@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,11 @@ namespace WebApplicationProject.Controllers
     {
         private readonly IHumanService _humanService;
 
-        public HumanController(IHumanService humanService)
+        private readonly ILogger _logger;
+
+        public HumanController(ILogger<HumanController> logger, IHumanService humanService)
         {
+            _logger = logger;
             _humanService = humanService;
         }
 
